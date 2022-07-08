@@ -13,18 +13,22 @@ Users.create([
   { username: "Champ", password:555 }
 ])
 
-puts " Seeding TaskList..."
+puts " Seeding TaskLists..."
 TaskList.create([
-  { mylist: "School Stuff", user_id:1, task_id:2, }
-  { mylist: "School Stuff", user_id:2, task_id:2, }
-  { mylist: "School Stuff", user_id:3, task_id:2, }
-  { mylist: "School Stuff", user_id:1, task_id:2, }
-  { mylist: "School Stuff", user_id:2, task_id:2, }
-  { mylist: "School Stuff", user_id:3, task_id:2, }
-  { mylist: "School Stuff", user_id:1, task_id:2, }
-  { mylist: "School Stuff", user_id:2, task_id:2, }
-  { mylist: "School Stuff", user_id:3, task_id:2, }
+  { mylist: "School Stuff", user_id:1, task_id:1 }
+  { mylist: "Bills To Pay", user_id:1, task_id:2 }
+  { mylist: "Music Lessons", user_id:1, task_id:3 }
+  { mylist: "Gift Shopping", user_id:2, task_id:4 }
+  { mylist: "Workouts", user_id:2, task_id:5 }
+  { mylist: "Job Search", user_id:2, task_id:6 }
+  { mylist: "Cooking", user_id:3, task_id:7 }
+  { mylist: "Grocery Shopping", user_id:3, task_id:2, }
+  { mylist: "Summer Goals", user_id:3, task_id:2, }
 ])
+
+puts " Seeding Tasks..."
+
+Tasks.create("2)
 
 
  
