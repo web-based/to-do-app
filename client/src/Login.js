@@ -5,6 +5,7 @@ import React, { useState} from 'react'
 function Login({onLogin}) {
 
   const [username, setUsername] = useState('');
+  
 
   function handleSubmit(e){
     e.preventDefault();
@@ -22,14 +23,26 @@ function Login({onLogin}) {
   return (
     <div>
 {/* ||||||||||||||||| Below this line is the login form for a new user ||||||||||||||||*/}
-      <form onSubmit={handleSubmit}>
-        <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+<form className="box" onSubmit={handleSubmit}>
+		<h1 class="text-center">Sign In </h1>
+	<div class="input-container">
+		<input 
+    type="text" 
+    required=""
+    value={username}
+    onChange={(e) => setUsername(e.target.value)}
         />
-        <button type="submit">Login</button>
-      </form>
+		<label>User Name</label>		
+	</div>
+
+	<div class="input-container">		
+		<input 
+    type="text" 
+    required=""/>
+		<label>Password</label>
+	</div>
+		<button class="btn-29" type="submit">Login</button>
+</form>	
 
     </div>
   );
