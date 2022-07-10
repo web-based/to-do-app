@@ -9,5 +9,10 @@
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+  },
+  "dependencies": {
+    "emailvalid": "^1.0.3",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^5.2.0"
   }
 }
