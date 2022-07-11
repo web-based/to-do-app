@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :task_lists
-  resources :tasks
-  resources :users
+  resources :task_lists, only: [:index, :show, :create, :destroy]
+  resources :tasks, only: [:index, :show, :create, :destroy]
+  resources :users, only: [:index, :show, :create]
+
   get '/hello', to: 'application#hello_world'
   get '*path',
     to: 'fallback#index',

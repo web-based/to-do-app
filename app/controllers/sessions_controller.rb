@@ -1,14 +1,24 @@
 class SessionsController < ApplicationController
   
-  # create method for adding a new user & verifying their login credentials & storing authenticated user's id in the session:
+  # POST /login
+  # create method adds a new user & verifying their login credentials & storing authenticated user's id in the session:
   def create
     user User.find_by(username: params[:username])
-    session[:user_id] = user.:id
-    render json: user
+    if user&.authenticate(params[:password])
+      session[:user_id] = user.id
+      render json: user, status: :ok
+    else
+      render json: { errors: "Invalid credentials" }, status: :unauthorized
+    end
   end
 
+  #DELETE /logout
   def destroy
-    session.delete :user_id
-    head :no_content
+    if current_user
+      session.clear
+    else
+      render json: { errors: "No active session" }, status: :unauthorized
+    end
   end
+
 end

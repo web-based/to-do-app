@@ -21,23 +21,10 @@ ActiveRecord::Schema.define(version: 2022_07_11_144300) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tasklists", force: :cascade do |t|
-    t.string "mylist"
-    t.integer "user_id"
-    t.integer "task_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tasks", force: :cascade do |t|
     t.string "taskname"
     t.integer "user_id"
     t.integer "task_list_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tests", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
