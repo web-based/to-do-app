@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tasklists
+  resources :task_lists
   resources :tasks
   resources :users
   get '/hello', to: 'application#hello_world'

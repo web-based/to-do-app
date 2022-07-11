@@ -14,16 +14,16 @@ User.create([
 ])
 
 puts " 📁 Seeding TaskLists..."
-Tasklist.create([
-  { mylist: "School Stuff", user_id:1, task_id:1 },
-  { mylist: "Bills To Pay", user_id:1, task_id:2 },
-  { mylist: "Music Lessons", user_id:1, task_id:3 },
-  { mylist: "Gift Shopping", user_id:2, task_id:4 },
-  { mylist: "Workouts", user_id:2, task_id:5 },
-  { mylist: "Job Search", user_id:2, task_id:6 },
-  { mylist: "Cooking", user_id:3, task_id:7 },
-  { mylist: "Grocery Shopping", user_id:3, task_id:8 },
-  { mylist: "Summer Goals", user_id:3, task_id:9 }
+TaskList.create([
+  { my_list: "School Stuff"},
+  { my_list: "Bills To Pay"},
+  { my_list: "Music Lessons"},
+  { my_list: "Gift Shopping"},
+  { my_list: "Workouts"},
+  { my_list: "Job Search"},
+  { my_list: "Cooking"},
+  { my_list: "Grocery Shopping"},
+  { my_list: "Summer Goals"}
 ])
 
 puts " 📄 Seeding Tasks..."

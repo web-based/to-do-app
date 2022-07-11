@@ -5,11 +5,12 @@ import React, { useState} from 'react'
 function Login({onLogin}) {
 
   const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   
 
   function handleSubmit(e){
     e.preventDefault();
-    fetch('/login',{
+    fetch('/users',{
       method: 'POST',
       headers:{
         "Content-Type": "application/json",
@@ -38,7 +39,10 @@ function Login({onLogin}) {
 	<div class="input-container">		
 		<input 
     type="text" 
-    required=""/>
+    required=""
+    value={password}
+    onChange={(e)=> setPassword(e.target.value)}
+    />
 		<label>Password</label>
 	</div>
 		<button class="btn-29" type="submit">Login</button>
