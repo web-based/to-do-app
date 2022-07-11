@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   
   
     def create
-      task = Task.create!(task_params)
+      task = Taskcreate!(task_params)
       render json: task, status: :created
     end
   
