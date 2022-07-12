@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import { Redirect, Link } from 'react-router-dom'
+import {Link } from 'react-router-dom'
 
 
 // |||||||| login component for any new user to the application ||||||||
@@ -36,7 +36,7 @@ function Login({setCurrentUser}) {
     <div>
 {/* ||||||||||||||||| Below this line is the login form for a new user ||||||||||||||||*/}
       <form className="box" onSubmit={handleSubmit}>
-        <h1 class="text-center">Sign In</h1>
+        <h1 class="text-center">Log In</h1>
           <div class="input-container">
             <input 
             type="text" 
@@ -59,7 +59,7 @@ function Login({setCurrentUser}) {
           <div class="btn-container">
           <button class="btn-29" type="submit">Log In</button>
           <p>-- or --</p>
-          <button class="btn-29" type="submit" to="/signup">Sign Up</button>
+          <Link class="btn-29" type="submit"  to="/signup">Sign Up</Link>
           </div>
       </form>	
 

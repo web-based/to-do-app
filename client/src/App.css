@@ -133,7 +133,6 @@ form{
   position: relative;
 }
 
-
 .input-container input:focus~label,
 .input-container input:valid~label {
   top: -12px;
@@ -152,3 +151,11 @@ label {
 .btn-container{
   text-align:center;
 }
+
+.btn-container > p {
+  font-family: 'Noto Sans';
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+
