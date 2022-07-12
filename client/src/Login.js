@@ -4,7 +4,7 @@ import {Link } from 'react-router-dom'
 
 // |||||||| login component for any new user to the application ||||||||
 function Login({setCurrentUser}) {
-  // const history = useHistory()
+  // const history = useHistory();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,8 +22,9 @@ function Login({setCurrentUser}) {
     .then(res => {
       if (res.ok) {
         res.json().then(user => {
+          console.log(user)
           setCurrentUser(user)
-          // history.push("/login")
+          // history.push('/home')
         })
       } else {
         res.json().then(errors => {
@@ -49,17 +50,17 @@ function Login({setCurrentUser}) {
 
           <div class="input-container">		
             <input 
-            type="password" 
-            name=""
-            value={password}
-            onChange={(e)=> setPassword(e.target.value)}
+              type="password" 
+              name=""
+              value={password}
+              onChange={(e)=> setPassword(e.target.value)}
             />
             <label>Password</label>
           </div>
-          <div class="btn-container">
-          <button class="btn-29" type="submit">Log In</button>
-          <p>-- or --</p>
-          <Link class="btn-29" type="submit"  to="/signup">Sign Up</Link>
+            <div class="btn-container">
+            <button class="btn-29" type="submit" to="/home">Log In</button>
+            <p>-- or --</p>
+            <Link class="btn-29" type="submit" to="/signup">Sign Up</Link>
           </div>
       </form>	
 

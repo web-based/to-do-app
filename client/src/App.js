@@ -5,6 +5,7 @@ import UnauthenticatedApp from './UnauthenticatedApp';
 import { BrowserRouter as Router } from 'react-router-dom'
 // import Login from './Login';
 // import Navigation from './Navigation';
+// import Home from './Home';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
   if (!authChecked) { return <div></div> }
     return (    
     <Router>
+     
         {currentUser ? (
           <AuthenticatedApp
             setCurrentUser={setCurrentUser}

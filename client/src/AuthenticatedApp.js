@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect} from 'react-router-dom'
 import Navigation from './Navigation'
+// import Home from './Home'
 
 function AuthenticatedApp({currentUser, setCurrentUser}) {
   //  const history = useHistory()
@@ -26,8 +27,8 @@ function AuthenticatedApp({currentUser, setCurrentUser}) {
         handleLogout={handleLogout}
         />
         <Switch>
-          <Route path="/">
-            {/*  */}
+          <Route path="/home">
+            {/* <Home /> */}
           </Route>
           <Route>
             {/*  */}
