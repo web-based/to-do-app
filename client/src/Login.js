@@ -1,8 +1,10 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
+// import { Redirect, Link } from 'react-router-dom'
 
 
 // |||||||| login component for any new user to the application ||||||||
-function Login({onLogin}) {
+function Login({setCurrentUser}) {
+  // const history = useHistory()
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -10,17 +12,26 @@ function Login({onLogin}) {
 
   function handleSubmit(e){
     e.preventDefault();
-    fetch('/users',{
+    fetch('/login',{
       method: 'POST',
       headers:{
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({username}),
+      body: JSON.stringify({username,password}),
     })
-    .then((r) => r.json())
-    .then((user) => onLogin(user));
+    .then(res => {
+      if (res.ok) {
+        res.json().then(user => {
+          setCurrentUser(user)
+          // history.push("/login")
+        })
+      } else {
+        res.json().then(errors => {
+          console.error(errors)
+        })
+      }
+    })
   }
-
   return (
     <div>
 {/* ||||||||||||||||| Below this line is the login form for a new user ||||||||||||||||*/}
@@ -29,23 +40,27 @@ function Login({onLogin}) {
           <div class="input-container">
             <input 
             type="text" 
-            required=""
+            name={username}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-                />
-            <label>User Name</label>		
+            />
+            <label htmlFor="username">User Name</label>		
           </div>
 
           <div class="input-container">		
             <input 
-            type="text" 
-            required=""
+            type="password" 
+            name=""
             value={password}
             onChange={(e)=> setPassword(e.target.value)}
             />
             <label>Password</label>
           </div>
-          <button class="btn-29" type="submit">Login</button>
+          <div class="btn-container">
+          <button class="btn-29" type="submit">Log In</button>
+          <p>-- or --</p>
+          <button class="btn-29" type="submit" to="/signup">Sign Up</button>
+          </div>
       </form>	
 
     </div>

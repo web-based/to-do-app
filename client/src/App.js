@@ -1,41 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Login from './Login';
+import AuthenticatedApp from './AuthenticatedApp';
+import UnauthenticatedApp from './UnauthenticatedApp';
+import { BrowserRouter as Router } from 'react-router-dom'
+// import Login from './Login';
 // import Navigation from './Navigation';
 
 
 function App() {
 
-  const [user,setUser] = useState(null);
+  const [currentUser,setCurrentUser] = useState(null)
+  const [authChecked, setAuthChecked] = useState(false)
 
   useEffect (()=> {
-    fetch("/me").then((response) => {
-      if (response.ok){
-        response.json().then((user) => setUser(user));
+    fetch("/me",{
+      credentials: 'include'
+    })
+    .then(res => {
+      if (res.ok){
+        res.json().then((user) => {
+          setCurrentUser(user)
+          setAuthChecked(true)
+        })
+      } else {
+        setAuthChecked(true)
       }
-    });
-  },[]);
+    })
+  },[])
 
-  if (user) {
-    return <h2>Welcome, {user.username}!</h2>;
-  } else {
-  } return (
+  if (!authChecked) { return <div></div> }
+    return (    
     <Router>
-      <div className="App">
-        {/* <Navigation /> */} 
-        <header>
-          <Switch>
-
-            <Route exact path="/">
-              <Login onLogin={setUser}  />
-            </Route>
-
-          </Switch>
-        </header>
-      </div>
+        {currentUser ? (
+          <AuthenticatedApp
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}/>) : (
+          <UnauthenticatedApp
+            setCurrentUser={setCurrentUser} />
+        )
+      }     
     </Router>
-  );
+  )
 }
 
 export default App;

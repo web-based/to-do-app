@@ -145,3 +145,10 @@ label {
   font-family: 'Noto Sans';
   font-size:2rem;
 }
+
+
+/* |||||||||||||||||||| LOGIN BUTTON CONTAINER ||||||||||||||||| */
+
+.btn-container{
+  text-align:center;
+}
