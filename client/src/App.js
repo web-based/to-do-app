@@ -3,13 +3,14 @@ import './App.css';
 import AuthenticatedApp from './AuthenticatedApp';
 import UnauthenticatedApp from './UnauthenticatedApp';
 import { BrowserRouter as Router } from 'react-router-dom'
+import TodoForm from './TodoForm';
 // import Login from './Login';
 // import Navigation from './Navigation';
 // import Home from './Home';
 
 
 function App() {
-
+  
   const [currentUser,setCurrentUser] = useState(null)
   const [authChecked, setAuthChecked] = useState(false)
 
@@ -29,7 +30,7 @@ function App() {
     })
   },[])
 
-  if (!authChecked) { return <div>
+  if (!authChecked) { return <div className="todo-app">
   
   </div> }
     return (    
@@ -42,8 +43,11 @@ function App() {
           <UnauthenticatedApp
             setCurrentUser={setCurrentUser} />
         )
-      }     
+      } 
+      
+    
     </Router>
+    
   )
 }
 

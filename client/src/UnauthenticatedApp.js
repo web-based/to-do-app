@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Login from './Login'
 import Signup from './Signup'
+import TodoList from './TodoList'
 
 function UnauthenticatedApp({ setCurrentUser }) {
   return (
@@ -11,6 +12,9 @@ function UnauthenticatedApp({ setCurrentUser }) {
       </Route>
       <Route exact path="/signup">
         <Signup setCurrentUser={setCurrentUser}/>
+      </Route>
+      <Route exact path="/todo">
+        <TodoList/>
       </Route>
       <Redirect to="/" />
     </Switch>

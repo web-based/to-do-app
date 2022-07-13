@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "emailvalid": "^1.0.3",
+    "nosx": "^0.1.8",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.4.0",
     "react-router-dom": "^5.2.0"
   }
 }

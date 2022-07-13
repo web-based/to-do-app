@@ -49,9 +49,9 @@ function Login({setCurrentUser}) {
     })
   }
   return (
-    <div>
+    <div >
 {/* ||||||||||||||||| Below this line is the login form for a new user ||||||||||||||||*/}
-      <form className="box" onSubmit={handleSubmit}>
+      <form class="login_form" className="box" onSubmit={handleSubmit}>
         <h1 class="text-center">Log In</h1>
           <div class="input-container">
             <input 
