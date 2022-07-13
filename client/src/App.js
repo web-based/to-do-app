@@ -29,10 +29,12 @@ function App() {
     })
   },[])
 
-  if (!authChecked) { return <div></div> }
+  if (!authChecked) { return <div>
+  
+  </div> }
     return (    
     <Router>
-     
+    
         {currentUser ? (
           <AuthenticatedApp
             setCurrentUser={setCurrentUser}

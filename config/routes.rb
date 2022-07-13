@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :tasks, only: [:index, :show, :create, :destroy]
   resources :users, only: [:index, :show, :create]
 
-  post "/login", to: "sessions#create" ## mapping the user create method for a POST request to /login
+  # post "/login", to: "sessions#create" ## mapping the user create method for a POST request to /login
 
   get '/hello', to: 'application#hello_world'
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
