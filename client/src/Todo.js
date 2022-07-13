@@ -6,6 +6,7 @@ function Todo() {
 //   completed: true,
 // }
 // ]);
+const [remainingTask, setRemainingTask] = useState(0);
 
   return (
     <div>Todo</div>

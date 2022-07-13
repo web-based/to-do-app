@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import {Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 
 // |||||||| login component for any new user to the application ||||||||
+
 function Login({setCurrentUser}) {
   // const history = useHistory();
 
@@ -38,7 +39,7 @@ function Login({setCurrentUser}) {
         res.json().then(user => {
           console.log(user)
           setCurrentUser(user)
-          // history.push('/home')
+          // history.push('/')
         })
       } else {
         res.json().then(errors => {
