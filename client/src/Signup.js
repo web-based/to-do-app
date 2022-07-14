@@ -7,6 +7,7 @@ function Signup({setCurrentUser}) {
  const [username, setUsername] = useState('')
  const [password, setPassword] = useState('')
  const [passwordConfirmation, setPasswordConfirmation] = useState('')
+ const [ displayError, setDisplayError] = useState('')
 
  const handleSubmit = (e) => {
   e.preventDefault()
@@ -18,60 +19,72 @@ function Signup({setCurrentUser}) {
     body:JSON.stringify({
       username,
       password,
-      passConfirm: passwordConfirmation
+      password_confirmation: passwordConfirmation
     })
-  })
- 
- .then(res => {
-  if (res.ok) {
-   res.json().then(user => {
-    setCurrentUser(user)
-    // history.push('/signup')
-   })
-  } else {
-    res.json().then(errors => {
-      console.error(errors)
+  }) 
+    .then(res => {
+      if (res.ok) {
+      res.json().then(user => {
+        setCurrentUser(user)
+        // history.push('/signup')
+      })
+      } else {
+        res.json().then(e => {
+          setDisplayError(e.errors)
+          // setDisplayError(Object.entries(e.errors).flat())
+        })
+      }
     })
-  }
-})
  }
   return (
     <div>
+      <h1>To Do App</h1>
+      <h2>Please Log In or Sign Up</h2>
       <form className="box" onSubmit={handleSubmit}>
-        <h1 class="text-center">Sign Up</h1>
-          <div class="input-container">
+        <h1 className="text-center">Sign Up</h1>
+          <div className="input-container">
             <input 
+            required
             type="text" 
-            name={username}
+            name="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
-                />
+            onChange={(e) => {
+              setDisplayError("")
+              setUsername(e.target.value)}
+            }/>
             <label htmlFor="username">User Name</label>		
           </div>
 
-          <div class="input-container">		
+          <div className="input-container">		
             <input 
+            required
             type="password" 
             name=""
             value={password}
-            onChange={(e)=> setPassword(e.target.value)}
-            />
+            onChange={(e)=> {
+              setDisplayError("")
+              setPassword(e.target.value)}
+            }/>
             <label>Password</label>
           </div>
 
-           <div class="input-container">		
+           <div className="input-container">		
             <input 
+            required
             type="password" 
             name="password_confirmation"
             value={passwordConfirmation}
-            onChange={(e)=> setPasswordConfirmation(e.target.value)}
-            />
+            onChange={(e)=> {
+              setDisplayError("")
+              setPasswordConfirmation(e.target.value)}
+            }/>
             <label>Password Confirmation</label>
           </div>
-          <div class="btn-container">
-            <button class="btn-29" type="submit">Sign Up</button>
+          <p>{displayError}</p>
+          <div className="btn-container">
+            <button className="btn-29" type="submit">Sign Up</button>
             <p>-- or --</p>
-            <Link type="submit" class="btn-29" to="/login">Log In</Link>
+            <Link type="submit" className="btn-29" to="/login">Log In</Link>
           </div>
       </form>	
 

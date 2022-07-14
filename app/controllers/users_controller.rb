@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user
 
   def index
     render json: User.all
@@ -12,6 +13,16 @@ class UsersController < ApplicationController
     end
   end
 
+    # post '/api/signup'
+  # def create
+  #   user = User.create(user_params)
+  #   if user.valid?
+  #     session[:user_id] = user.id
+  #     render json: user, status: :ok
+  #   else
+  #     render json: { error: user.errors }, status: :unprocessable_entity
+  #   end
+  # end
   def create
     user = User.create!(user_params)
     session[:user_id] = user.id

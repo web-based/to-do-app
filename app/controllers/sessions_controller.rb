@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+  skip_before_action :authenticate_user
   # POST /login
   # create method adds a new user & verifying their login credentials & storing authenticated user's id in the session:
   def create
