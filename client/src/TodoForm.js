@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
+
 function TodoForm(props) {
 const [input,setInput] = useState('')
 
@@ -25,6 +26,7 @@ const handleSubmit = (e) => {
 
   return (
     <div>
+      
       <form className="todo-form" onSubmit={handleSubmit}>
         <input 
         type="text" 
@@ -36,7 +38,9 @@ const handleSubmit = (e) => {
         ref={inputRef}
         />
          <button className='todo-button'> Add todo</button>
+         
       </form>
+      
      
     </div>
   )

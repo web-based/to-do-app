@@ -3,6 +3,14 @@ class UsersController < ApplicationController
 
   def index
     render json: User.all
+    # render json: User.all.to_json(include: :task_lists)
+  end
+
+  def task_lists_index
+    # user = User.find(params[:user_id])
+    # task_lists = user.task_lists.uniq
+    task_lists = current_user.task_lists.uniq
+    render json: task_lists
   end
 
   def show

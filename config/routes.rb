@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create" ## mapping the user create method for a POST request to /login
   delete "/logout", to: "sessions#destroy"
+
+  get 'users/:user_id/task_lists', to: "users#task_lists_index" #get respective user's task_lists
     
 end
