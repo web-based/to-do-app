@@ -1,10 +1,35 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import TodoForm from './TodoForm'
-import { RiCloseCircleLine } from 'react-icons/ri'
-import { TiEdit } from 'react-icons/ti'
+import TaskCard from './TaskCard';
 
 
 function Todo({todos, completeTodo, removeTodo, updateTodo}) {
+
+  const [ tasks, setTasks ] = useState([])
+
+  useEffect (()=> {
+    fetch(`/users/:user_id/tasks`, {
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(data => {
+      setTasks(()=>data)
+    })
+  },[])  
+  
+  const renderTaskCards = tasks.map( (t) => (<TaskCard key={t.id} id={t.id} taskname={t.taskname}/>) )
+
+
+
+
+
+
+
+
+
+
+
+
 const [edit, setEdit] = useState({
   id: null,
   value: '',
@@ -22,27 +47,11 @@ if (edit.id){
 }
 
 
-  return todos.map((todo, index)=> (
-    <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} 
-    key={index}
-    >
+return(
+    <div>{renderTaskCards}  
 
-    <div key={todo.id} onClick={() => completeTodo(todo.id)}>
-      {todo.text}
-    </div >
-    <div className="icons">
-    <RiCloseCircleLine 
-    onClick={()=> removeTodo(todo.id)}
-    className='delete-icon'
-    />
-    <TiEdit 
-    onClick={() => setEdit({ id: todo.id, value: todo.text })}
-    className='edit-icon'/>
-  
- </div>
-
-      </div>
-  ))
+     </div >
+  )
 }
 
 export default Todo

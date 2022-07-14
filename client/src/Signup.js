@@ -30,7 +30,7 @@ function Signup({setCurrentUser}) {
       })
       } else {
         res.json().then(e => {
-          setDisplayError(e.errors)
+          setDisplayError(e.errors.join(', '))
           // setDisplayError(Object.entries(e.errors).flat())
         })
       }

@@ -3,7 +3,7 @@ import TodoForm from './TodoForm'
 import Todo from './Todo'
 import { FcTodoList } from 'react-icons/fc'
 
-function TodoList() {
+function TodoList({currentUser}) {
   const [todos, setTodos] = useState([]);
 
   const addTodo = todo => {
@@ -44,16 +44,16 @@ const completeTodo = id => {
 
 
   return (
-    <div class="todo-app">
+    <div className="todo-app">
       <h1> What's your plan for Today? </h1>
         <FcTodoList className="todo-list-icon"/>
       
-      <TodoForm onSubmit={addTodo} />
+      <TodoForm onSubmit={addTodo} currentUser={currentUser}/>
       <Todo 
-      todos={todos}
-      completeTodo={completeTodo}
-      removeTodo={removeTodo}
-      updateTodo={updateTodo}
+          todos={todos}
+          completeTodo={completeTodo}
+          removeTodo={removeTodo}
+          updateTodo={updateTodo}
       />
     </div>
   )

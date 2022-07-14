@@ -1,13 +1,24 @@
 import React from 'react'
+import { RiCloseCircleLine } from 'react-icons/ri'
+import { TiEdit } from 'react-icons/ti'
 
 function TaskCard({ id, taskname }) {
    
   return (
-    <div>
-        <h2>{taskname}
-        <button>edit</button>
-        <button>x</button></h2>
+        
+    <div className="todo-row">
+      <p>{taskname}</p>
+      <div className="buttons-todo">
+           <RiCloseCircleLine 
+        onClick={()=> ("")}
+        className='delete-icon'/>
+      <TiEdit 
+        onClick={() => ("")}
+        className='edit-icon'/>
+      </div>
+   
     </div>
+
   )
 }
 
