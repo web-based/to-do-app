@@ -1,23 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import TaskListCard from './TaskListCard';
+import React, { useState, useEffect, useRef } from 'react';
+import TaskCard from './TaskCard';
+import CategoryCard from './CategoryCard';
+import TodoList from './TodoList';
 
 function Home({currentUser}) {
 
-  const [ taskLists, setTaskLists ] = useState([])
-    useEffect (()=> {
-      fetch(`/users/:user_id/task_lists`, {
-        credentials: 'include'
-      })
-        .then(res => res.json())
-        .then(data => {
-          setTaskLists(data)
-        })
-    },[])    
+  const [ categories, setCategories ] = useState([])
+  const [ tasks, setTasks ] = useState([])
     
-  const taskListsCards = taskLists.map( (t) => (<TaskListCard key={t.id} id={t.id} my_list={t.my_list} tasks={t.tasks}/>) )
+  useEffect (()=> {
+    fetch(`/users/:user_id/tasks`, {
+      credentials: 'include'
+    })
+      .then(res => res.json())
+      .then(data => {
+        setTasks(()=>data)
+      })
+  },[])  
+
+  useEffect (()=> {
+    fetch(`/categories`, {
+      credentials: 'include'
+    })
+      .then(res => res.json())
+      .then(data => {
+        setCategories(()=>data)
+      })
+  },[])    
+
+  const renderCategoryCards = categories.map( (t) => (<CategoryCard key={t.id} id={t.id} name={t.name}/>) )
+  const renderTaskCards = tasks.map( (t) => (<TaskCard key={t.id} id={t.id} taskname={t.taskname}/>) )
     
   return (
-    <div>{taskListsCards}</div>
+    <div>
+      
+
+
+
+      <TodoList/>
+      <div>{renderCategoryCards}</div>
+      <div>{renderTaskCards}</div>
+      
+    </div>
   )
 }
 

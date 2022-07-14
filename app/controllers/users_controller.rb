@@ -6,11 +6,9 @@ class UsersController < ApplicationController
     # render json: User.all.to_json(include: :task_lists)
   end
 
-  def task_lists_index
-    # user = User.find(params[:user_id])
-    # task_lists = user.task_lists.uniq
-    task_lists = current_user.task_lists.uniq
-    render json: task_lists
+  def tasks_index
+    tasks = current_user.tasks
+    render json: tasks
   end
 
   def show
@@ -21,16 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-    # post '/api/signup'
-  # def create
-  #   user = User.create(user_params)
-  #   if user.valid?
-  #     session[:user_id] = user.id
-  #     render json: user, status: :ok
-  #   else
-  #     render json: { error: user.errors }, status: :unprocessable_entity
-  #   end
-  # end
   def create
     user = User.create!(user_params)
     session[:user_id] = user.id

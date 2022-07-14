@@ -25,9 +25,9 @@ function App() {
     })
   },[])
 
-  if (!authChecked) { return <div className="todo-app">
-  
+if (!authChecked) { return <div className="todo-app">
   </div> }
+  
     return (    
     <Router>
     

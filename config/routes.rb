@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  resources :task_lists, only: [:index, :show, :create, :destroy]
+
+  resources :categories, only: [:index]
   resources :tasks, only: [:index, :show, :create, :destroy]
   resources :users, only: [:index, :show, :create]
-
-  # post "/login", to: "sessions#create" ## mapping the user create method for a POST request to /login
 
   get '/hello', to: 'application#hello_world'
   get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
@@ -13,6 +12,6 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create" ## mapping the user create method for a POST request to /login
   delete "/logout", to: "sessions#destroy"
 
-  get 'users/:user_id/task_lists', to: "users#task_lists_index" #get respective user's task_lists
+  get 'users/:user_id/tasks', to: "users#tasks_index" #get respective user's task_lists
     
 end
