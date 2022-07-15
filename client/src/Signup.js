@@ -39,7 +39,6 @@ function Signup({setCurrentUser}) {
   return (
     <div>
       <h1>To Do App</h1>
-      <h2>Please Log In or Sign Up</h2>
       <form className="box" onSubmit={handleSubmit}>
         <h1 className="text-center">Sign Up</h1>
           <div className="input-container">
@@ -86,6 +85,7 @@ function Signup({setCurrentUser}) {
             <p>-- or --</p>
             <Link type="submit" className="btn-29" to="/login">Log In</Link>
           </div>
+          <p>Please Log In or Sign Up</p>
       </form>	
 
     </div>

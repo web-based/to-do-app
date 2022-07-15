@@ -177,7 +177,7 @@ label {
   display: flex;
   flex-direction: column;
   /* justify-content: start; */
-  width: 520px;
+  width: 600px;
   min-height: 100%;
   background: #161a2bf0;
   text-align: center;
@@ -191,7 +191,9 @@ label {
 h1 {
   margin: 32px 0;
   color: #fff;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.75);
 }
 
 .complete {
@@ -208,7 +210,7 @@ h1 {
 
 .todo-input {
   padding: 14px 32px 14px 16px;
-  border-radius: 4px 0 0 4px;
+ 
   border: 2px solid #5d0cff;
   outline: none;
   width: 320px;
@@ -221,6 +223,7 @@ h1 {
 }
 
 .todo-button {
+  text-size: 30px;
   padding: 16px;
   border: none;
   border-radius: 0 4px 4px 0;
@@ -258,7 +261,7 @@ h1 {
   color: #fff;
   padding: 16px;
   border-radius: 5px;
-  width: 500px;
+  width: 580px;
 
 }
 
@@ -326,3 +329,28 @@ h1 {
   margin-bottom: 3%;
 
 }
+
+.buttons-todo {
+  display: flex;
+
+}
+
+#dropdown {
+    border-radius: 4px 0 0 4px ;
+}
+
+.d {
+  background-color: black;
+}
+
+.logout {
+  margin-left: 70%;
+}
+
+ #circle {
+   width: 10px;
+   height: 10px;
+   background: lightgreen;
+   border-radius: 50%;
+   display:inline-flex;
+ }

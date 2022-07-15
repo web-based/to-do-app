@@ -13,6 +13,9 @@ function TodoForm({currentUser}) {
                                               taskname: ""
                                             })
 
+  useEffect(()=> {
+    inputRef.current.focus()
+  })
 
   useEffect (()=> {
     fetch(`/users/:user_id/tasks`, {
@@ -20,17 +23,25 @@ function TodoForm({currentUser}) {
     })
     .then(res => res.json())
     .then(data => {
-      setTasks(()=>data)
+      setTasks(data)
     })
   },[])
 
+  useEffect (()=> {
+    fetch(`/categories`, {
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(data => {
+      setCategories(data)
+    })
+  },[])  
+  
   const inputRef = useRef(null)
 
-  useEffect(()=> {
-    inputRef.current.focus()
-  })
-
-  const handleChange = e => {
+  const categoryOptions = categories.map( (c) => (<option className="d" key={c.id} id={c.id} value={c.id}> {c.name} </option>) )
+  
+  const handleChange = (e) => {
       let key=e.target.name
       let value= e.target.type==='select-one' ? parseInt(e.target.value): e.target.value
       setFormData((formData)=>({...formData, [key]:value}))
@@ -45,23 +56,25 @@ function TodoForm({currentUser}) {
     })
     .then(r => r.json())
     .then(newTask => {
-        console.log(newTask)
+        // console.log(newTask)
         setTasks([...tasks, newTask])
-        setFormData({taskname:""})
+        setFormData({
+          category_id: formData.category_id,
+          user_id: currentUser.id,
+          taskname:""})
     })
   }
 
-  useEffect (()=> {
-    fetch(`/categories`, {
-      credentials: 'include'
+  const handleDelete = (id) => {
+    fetch(`/tasks/${id}`,{
+      method: 'DELETE',
     })
-      .then(res => res.json())
-      .then(data => {
-          setCategories(()=>data)
-      })
-  },[])  
+    console.log(id)
+    const updatedTasks = tasks.filter((t) => t.id !== id)
+    setTasks(updatedTasks)
 
-  const categoryOptions = categories.map( (c) => (<option key={c.id} id={c.id} value={c.id}> {c.name} </option>) )
+  }
+
 
 
   return (
@@ -71,7 +84,7 @@ function TodoForm({currentUser}) {
       <FcTodoList className="todo-list-icon"/>
 
       <form className="todo-form" onSubmit={handleTaskSubmit}>
-          <select name="category_id" onChange={handleChange}> {categoryOptions} </select>
+          <select className="todo-button" id="dropdown" name="category_id" onChange={handleChange}> {categoryOptions} </select>
           <input 
               type="text" 
               placeholder="Add a todo" 
@@ -84,7 +97,7 @@ function TodoForm({currentUser}) {
          <button className='todo-button'> Add todo </button>         
       </form>         
           
-      <Todo tasks={tasks}/>
+      <Todo tasks={tasks} handleDelete={handleDelete}/>
      
     </div>
   )
