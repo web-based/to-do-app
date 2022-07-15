@@ -9,14 +9,13 @@ function TaskCard({ id, taskname }) {
     <div className="todo-row">
       <p>{taskname}</p>
       <div className="buttons-todo">
-           <RiCloseCircleLine 
-        onClick={()=> ("")}
-        className='delete-icon'/>
-      <TiEdit 
-        onClick={() => ("")}
-        className='edit-icon'/>
-      </div>
-   
+        <RiCloseCircleLine 
+          onClick={()=> ("")}
+          className='delete-icon'/>
+        <TiEdit 
+          onClick={() => ("")}
+          className='edit-icon'/>
+      </div>   
     </div>
 
   )

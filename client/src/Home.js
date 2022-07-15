@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoList from './TodoList';
+import TodoForm from './TodoForm';
 
 function Home({currentUser}) {
 
@@ -7,7 +7,7 @@ function Home({currentUser}) {
   return (
     <div>
 
-      <TodoList currentUser={currentUser}/>
+      <TodoForm currentUser={currentUser}/>
             
     </div>
   )
