@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :categories, only: [:index]
-  resources :tasks, only: [:index, :show, :create, :destroy]
+  resources :tasks
   resources :users, only: [:index, :show, :create]
 
   get '/hello', to: 'application#hello_world'

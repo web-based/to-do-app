@@ -7,15 +7,19 @@ function TodoForm({currentUser}) {
 
   const [ categories, setCategories ] = useState([])
   const [ tasks, setTasks ] = useState([])
+  const [ showEdit, setShowEdit ] = useState(false)
+  const [ updatedTaskname, setUpdatedTaskname ] = useState("")
+  const [ editId, setEditId ] = useState([])
+  const [ editC, setEditC ] = useState([])
   const [ formData, setFormData ] = useState({
-                                              category_id: 1,
-                                              user_id: currentUser.id,
-                                              taskname: ""
-                                            })
+    category_id: 1,
+    user_id: currentUser.id,
+    taskname: ""
+  })
 
   useEffect(()=> {
     inputRef.current.focus()
-  })
+  },[])
 
   useEffect (()=> {
     fetch(`/users/:user_id/tasks`, {
@@ -69,11 +73,38 @@ function TodoForm({currentUser}) {
     fetch(`/tasks/${id}`,{
       method: 'DELETE',
     })
-    console.log(id)
     const updatedTasks = tasks.filter((t) => t.id !== id)
     setTasks(updatedTasks)
-
   }
+
+  const handleUpdate = (id, taskname, newC) => {
+    setShowEdit(true)
+    setUpdatedTaskname(taskname)
+    setEditId(id)
+    setEditC(newC)
+  }
+
+  const handleUpdateSubmit = (e) => {
+    e.preventDefault()
+    console.log(editId,typeof (editId),editC, typeof(editC), updatedTaskname)
+    fetch(`/tasks/${editId}`,{
+      method: 'PATCH',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        user_id: currentUser.id,
+        category_id: editC,
+        taskname: updatedTaskname
+      })
+    })
+    .then(r => r.json())
+    .then(newTask => {
+      const updatedTasks = tasks.filter((t) => t.id !== newTask.id)
+      setTasks([...updatedTasks,newTask])
+      // setTasks([...tasks, newTask])
+      setShowEdit(false)
+    })
+  }
+  
 
 
 
@@ -95,9 +126,22 @@ function TodoForm({currentUser}) {
               ref={inputRef}
           />
          <button className='todo-button'> Add todo </button>         
-      </form>         
+      </form>
+
+      {showEdit?
+        <form onSubmit={handleUpdateSubmit}>
+          <input
+              type="text"  
+              value={updatedTaskname} 
+              name='taskname'
+              className='todo-input'
+              onChange={(e)=>setUpdatedTaskname(e.target.value)}
+              ref={inputRef}
+          />      
+          <button className='todo-button'>Submit Change</button>
+        </form>:null} 
           
-      <Todo tasks={tasks} handleDelete={handleDelete}/>
+      <Todo tasks={tasks} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
      
     </div>
   )

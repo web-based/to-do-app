@@ -87,10 +87,10 @@ function Login({setCurrentUser}) {
           <p>{displayError}</p>
           <div className="btn-container">
             <button className="btn-29"  to="/home">Log In</button>
-            <p>-- or --</p>
+            <p className="or-section">-- or --</p>
             <Link className="btn-29" type="submit" to="/signup">Sign Up</Link>
+          <p className="login-footer">Please Log In or Sign Up</p>
           </div>
-          <p>Please Log In or Sign Up</p>
       </form>	
 
     </div>

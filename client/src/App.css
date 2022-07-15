@@ -155,7 +155,14 @@ label {
   font-size: 1.1rem;
 }
 
+.login-footer {
+  margin-top: 20px;
 
+}
+
+.or-section {
+  margin: 3% 0 3% 0;
+}
 
 /* ||||||||||||||||||||||||    TO-DO APP STYLES            |||||||||||||||||||||||||| */
 
