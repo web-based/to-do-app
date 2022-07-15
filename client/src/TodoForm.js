@@ -86,7 +86,7 @@ function TodoForm({currentUser}) {
 
   const handleUpdateSubmit = (e) => {
     e.preventDefault()
-    console.log(editId,typeof (editId),editC, typeof(editC), updatedTaskname)
+    // console.log(editId,typeof (editId),editC, typeof(editC), updatedTaskname)
     fetch(`/tasks/${editId}`,{
       method: 'PATCH',
       headers: {'Content-Type':'application/json'},
