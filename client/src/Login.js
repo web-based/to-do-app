@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import logo from './images/todo_logo.png'
 
 
 // |||||||| login component for any new user to the application ||||||||
@@ -52,9 +53,9 @@ function Login({setCurrentUser}) {
   }
   return (
     <div >
-      <h1>To Do App</h1>
 {/* ||||||||||||||||| Below this line is the login form for a new user ||||||||||||||||*/}
        <form className="box" onSubmit={handleSubmit}> 
+      <img style={{display:"block", width:"50%", margin: "auto"}} alt="to-do logo" src={logo}/>
         <h1 className="text-center">Log In</h1>
           <div className="input-container">
             <input 

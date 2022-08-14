@@ -33,7 +33,7 @@ function TodoForm({currentUser}) {
 
   useEffect (()=> {
     fetch(`/categories`, {
-      credentials: 'include'
+       
     })
     .then(res => res.json())
     .then(data => {
@@ -43,7 +43,8 @@ function TodoForm({currentUser}) {
   
   const inputRef = useRef(null)
 
-  const categoryOptions = categories.map( (c) => (<option className="d" key={c.id} id={c.id} value={c.id}> {c.name} </option>) )
+  const categoryOptions = categories.map( (c) => (
+  <option className="d" key={c.id} id={c.id} value={c.id}> {c.name} </option>) )
   
   const handleChange = (e) => {
       let key=e.target.name
@@ -115,7 +116,7 @@ function TodoForm({currentUser}) {
       <FcTodoList className="todo-list-icon"/>
 
       <form className="todo-form" onSubmit={handleTaskSubmit}>
-          <select className="todo-button" id="dropdown" name="category_id" onChange={handleChange}> {categoryOptions} </select>
+          <select className="todo-button option-btn" id="dropdown" name="category_id" onChange={handleChange}> {categoryOptions} </select>
           <input 
               type="text" 
               placeholder="Add a todo" 
@@ -125,7 +126,7 @@ function TodoForm({currentUser}) {
               onChange={handleChange}
               ref={inputRef}
           />
-         <button className='todo-button'> Add todo </button>         
+         <button className='todo-button add-btn'> Add todo </button>         
       </form>
 
       {showEdit?

@@ -6,6 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### in the client directory run `npm start`
+### dont for get npm install 
+
+### in db directory run `rails s` to start the server
+### dont forget bundle install 
+
 ### `npm start`
 
 Runs the app in the development mode.\
